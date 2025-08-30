@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -98,7 +99,7 @@
       <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
       <h1>
         <span class="star">✧</span>
-        <img src="https://jumpshare.com/s/VMmEvjVQwdkLAykvVPRQ" alt="Glitter">
+        <img src="https://img10.glitterfy.com/25241/glitterfy5110259T773B81.gif" alt="Glitter">
         <span class="star">✧</span>
       </h1>
       <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
