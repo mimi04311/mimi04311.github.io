@@ -1,17 +1,23 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <title>Wild Berri Stables</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <style>
-  :root{
-    --base-bg-r:208; --base-bg-g:122; --base-bg-b:149;
+  :root {
+    --base-bg-r: 208; 
+    --base-bg-g: 122; 
+    --base-bg-b: 149;
   }
 
-  html,body{height:100%; margin:0; padding:0;}
+  html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+  }
+
   body {
-    background-color: rgb(var(--base-bg-r),var(--base-bg-g),var(--base-bg-b));
+    background-color: rgb(var(--base-bg-r), var(--base-bg-g), var(--base-bg-b));
     font-family: Georgia, serif;
     margin: 0;
     padding: 20px;
@@ -21,45 +27,66 @@
     position: relative;
   }
 
-  /* Content wrapper constrained to 720px for text width */
   .content-wrap {
-    max-width: 720px;        /* TEXT width constraint */
+    max-width: 720px; 
     margin: 0 auto;
-    text-align: center;      /* body text centered under headers */
+    text-align: center; 
   }
 
-  h1,h2 { margin:10px 0; color:#800080; }
-  p { line-height:1.6; margin:0 0 1em 0; }
-  a { text-decoration:none; color:inherit; }
-  a:hover, a:focus { text-decoration:underline; }
+  h1, h2 { 
+    margin: 10px 0; 
+    color: #800080; 
+  }
 
-  .divider { height:3px; width:600px; margin:20px auto; background: linear-gradient(to right,#800080,#c71585); }
-  .divider-small { height:2px; width:400px; margin:20px auto; background: linear-gradient(to right,#800080,#c71585); }
+  p { 
+    line-height: 1.6; 
+    margin: 0 0 1em 0; 
+    text-align: center; 
+  }
 
-  /* Stars: exact pale gold appearance (kept unchanged) */
+  a { 
+    text-decoration: none; 
+    color: inherit; 
+  }
+
+  a:hover, a:focus { 
+    text-decoration: underline; 
+  }
+
+  .divider { 
+    height: 3px; 
+    width: 600px; 
+    margin: 20px auto; 
+    background: linear-gradient(to right, #800080, #c71585); 
+  }
+
+  .divider-small { 
+    height: 2px; 
+    width: 400px; 
+    margin: 20px auto; 
+    background: linear-gradient(to right, #800080, #c71585); 
+  }
+
   .star {
-    color: #fdf5c8; /* pale gold exact */
+    color: #fdf5c8; 
     font-size: 1em;
     display: inline-block;
-    text-shadow:
-      0 0 5px #fffacd,
-      0 0 10px #fff8dc,
-      0 0 20px #ffd700,
-      0 0 30px #ffe680,
-      0 0 40px #fff8dc;
+    text-shadow: 0 0 5px #fffacd, 0 0 10px #fff8dc, 0 0 20px #ffd700, 0 0 30px #ffe680, 0 0 40px #fff8dc;
     transition: opacity .45s linear, text-shadow .45s linear;
     will-change: opacity, text-shadow;
   }
 
-  img { vertical-align: middle; }
+  img { 
+    vertical-align: middle; 
+  }
 
-  /* Sparkle particle style (for stochastic glitter near stars) */
   .spark {
     position: absolute;
     pointer-events: none;
-    width: 6px; height: 6px;
+    width: 6px; 
+    height: 6px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #fff, rgba(255,255,255,0.9) 20%, rgba(255,240,160,0.8) 40%, rgba(255,200,60,0.0) 70%);
+    background: radial-gradient(circle at 35% 30%, #fff, rgba(255, 255, 255, 0.9) 20%, rgba(255, 240, 160, 0.8) 40%, rgba(255, 200, 60, 0.0) 70%);
     opacity: 0;
     transform: scale(0.2);
     will-change: transform, opacity, left, top;
@@ -67,25 +94,26 @@
   }
 
   @keyframes sparkAnim {
-    0%   { opacity:1; transform: scale(0.2) translateY(0); }
-    60%  { opacity:0.9; transform: scale(1.0) translateY(-6px); }
-    100% { opacity:0; transform: scale(1.2) translateY(-12px); }
+    0%   { opacity: 1; transform: scale(0.2) translateY(0); }
+    60%  { opacity: 0.9; transform: scale(1.0) translateY(-6px); }
+    100% { opacity: 0; transform: scale(1.2) translateY(-12px); }
   }
 
-  /* Flower base style: absolutely positioned so they float above text */
   .flower {
-    position: absolute;       /* absolute in document coordinates -> will move with scroll */
-    z-index: 9999;            /* above page content */
+    position: absolute; 
+    z-index: 9999; 
     font-size: 20px;
     user-select: none;
     -webkit-user-select: none;
     line-height: 1;
     transform-origin: center center;
     will-change: transform, left, top, color, opacity;
-    pointer-events: none;     /* default: not intercept clicks unless enabled temporarily */
+    pointer-events: none; 
   }
 
-  .flower:focus { outline: 2px solid rgba(255,255,255,0.15); }
+  .flower:focus { 
+    outline: 2px solid rgba(255, 255, 255, 0.15); 
+  }
 
 </style>
 </head>
@@ -95,7 +123,7 @@
 
     <div class="divider"></div>
 
-    <div style="font-size: 42px; text-shadow: 2px 2px 4px rgba(128,0,128,0.3);">
+    <div style="font-size: 42px; text-shadow: 2px 2px 4px rgba(128, 0, 128, 0.3);">
       <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
       <h1>
         <span class="star">✧</span>
@@ -105,11 +133,11 @@
       <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
     </div>
 
-    <p style="font-style: italic; font-size: 18px;">
-      ◈────── <span class="star">『 Where strength meets refinement, and heritage meets the future 』</span> ──────◈
-    </p>
+ <p class="responsive-line">
+  ◈────── <span class="star">『 Where strength meets refinement, and heritage meets the future 』</span> ──────◈
+</p>
 
-    <div class="divider"></div>
+<div class="divider"></div>
 
     <h2><span class="flower-inline">❀</span>━━━ About Us ━━━<span class="flower-inline">❀</span></h2>
     <p>
@@ -162,7 +190,6 @@
 
   </div>
 
-  <!-- container for sparkles -->
   <div id="spark-container" aria-hidden="true"></div>
 
 <script>
@@ -196,7 +223,6 @@
       `;
       total += opacity;
     }
-    // background linked to average brightness
     const avg = total / Math.max(1, stars.length);
     const base = {r:208,g:122,b:149};
     const darken = 30 * (1 - avg);
@@ -206,7 +232,6 @@
   }
   requestAnimationFrame(tickStars);
 
-  /* stochastic glitter around stars: spawn tiny sparks near random stars occasionally */
   const sparkContainer = document.getElementById('spark-container');
   function spawnSparkAroundStar(){
     if(stars.length === 0) return;
@@ -234,20 +259,16 @@
 (function(){
   const INLINE_SELECTOR = '.flower-inline';
   const placeholders = Array.from(document.querySelectorAll(INLINE_SELECTOR));
-  const palette = [230, 240, 250, 260, 270, 280, 290]; // periwinkle->purple->blue family
+  const palette = [230, 240, 250, 260, 270, 280, 290]; 
   const flowers = [];
 
-  // Bounds (document-space) for flowers:
-  // - Width bound: center-aligned region of 750px (flowers bounce/drift at left/right edges)
-  // - Text/content area remains max 720px centered; we do not change text.
-  const FLOWER_REGION_WIDTH = 750;           // as requested (flowers bounds before bouncing)
-  const FLOWER_MAX_HEIGHT = 650;             // back-and-forth total height constraint
-  const TOP_MARGIN = 60;                     // starting top of flower allowed area
+  const FLOWER_REGION_WIDTH = 750;           
+  const FLOWER_MAX_HEIGHT = 650;             
+  const TOP_MARGIN = 60;                     
 
   function rand(min,max){ return Math.random()*(max-min)+min; }
   function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
-  // compute region centered on content-wrap center
   function computeRegion(){
     const centerX = window.innerWidth / 2 + window.scrollX;
     const xMin = Math.round(centerX - FLOWER_REGION_WIDTH/2);
@@ -257,13 +278,11 @@
     return {xMin, xMax, yMin, yMax};
   }
 
-  // create flower element at document coordinate (pageX, pageY)
   function createFlower(char, pageX, pageY, baseHue){
     const el = document.createElement('span');
     el.className = 'flower';
     el.textContent = char;
     document.body.appendChild(el);
-    // initial style
     el.style.left = `${pageX}px`;
     el.style.top  = `${pageY}px`;
     el.style.opacity = '0';
@@ -283,7 +302,7 @@
       phase2: rand(0, Math.PI*2),
       speed: rand(0.00022, 0.0006),
       speed2: rand(0.00012, 0.00032),
-      radius: 12 + Math.random()*6, // approximate collision radius in px
+      radius: 12 + Math.random()*6, 
       mass: 1 + Math.random()*1.2,
       interactive: Math.random() > 0.45,
       canSpinOnClick: Math.random() > 0.7,
@@ -300,13 +319,11 @@
       }, {passive:true});
     }
 
-    // pointer-events toggled by proximity so they don't block clicks normally
     el.style.pointerEvents = 'none';
     flowers.push(f);
     return f;
   }
 
-  // convert placeholders to absolute flowers (preserve inline flow)
   placeholders.forEach((ph, i) => {
     const rect = ph.getBoundingClientRect();
     const pageX = rect.left + window.scrollX;
@@ -318,7 +335,6 @@
     ph.style.pointerEvents = 'none';
   });
 
-  // add extras up to a target count
   const TARGET = 22;
   while(flowers.length < TARGET){
     const left = rand(80, Math.max(160, window.innerWidth-160)) + window.scrollX;
@@ -328,25 +344,21 @@
     createFlower(char, left, top, hue);
   }
 
-  // shade computation within hue family
   function shadeFromHue(hue, p1, p2){
-    const lightness = 52 + 14 * Math.sin(p1);    // ~38..66
-    const saturation = 62 + 12 * Math.sin(p2);  // ~50..74
+    const lightness = 52 + 14 * Math.sin(p1);    
+    const saturation = 62 + 12 * Math.sin(p2);  
     const hueBreath = hue + 3 * Math.sin(p1*0.6 + p2*0.4);
     return `hsl(${hueBreath.toFixed(1)}, ${saturation.toFixed(1)}%, ${lightness.toFixed(1)}%)`;
   }
 
-  // collision resolution (elastic-ish) between circle bodies
   function resolveCollision(a, b){
     const dx = b.x - a.x;
     const dy = b.y - a.y;
     const dist = Math.hypot(dx, dy) || 0.0001;
     const overlap = (a.radius + b.radius) - dist;
     if(overlap > 0){
-      // normal vector
       const nx = dx / dist;
       const ny = dy / dist;
-      // push them apart proportionally to mass
       const totalMass = a.mass + b.mass;
       const pushA = (overlap * (b.mass / totalMass)) * 1.02;
       const pushB = (overlap * (a.mass / totalMass)) * 1.02;
@@ -355,13 +367,11 @@
       b.x += nx * pushB;
       b.y += ny * pushB;
 
-      // relative velocity along normal
       const rvx = b.vx - a.vx;
       const rvy = b.vy - a.vy;
       const velAlongNormal = rvx*nx + rvy*ny;
       if(velAlongNormal > -0.0001) {
-        // compute restitution (bounciness)
-        const restitution = 0.6 + Math.random()*0.2; // slightly random
+        const restitution = 0.6 + Math.random()*0.2; 
         const j = -(1 + restitution) * velAlongNormal / (1/a.mass + 1/b.mass);
         const impulseX = j * nx;
         const impulseY = j * ny;
@@ -370,14 +380,12 @@
         b.vx += impulseX / b.mass;
         b.vy += impulseY / b.mass;
 
-        // small spin transfer
         a.spinVel += (Math.random()-0.5)*0.6;
         b.spinVel += (Math.random()-0.5)*0.6;
       }
     }
   }
 
-  // main loop: physics integration + collisions + edge behavior
   let last = performance.now();
   function loop(now){
     const dt = Math.min(40, now - last);
@@ -387,38 +395,31 @@
     for(let i=0;i<flowers.length;i++){
       const f = flowers[i];
 
-      // advance color phases
       f.phase += f.speed * dt;
       f.phase2 += f.speed2 * dt;
       f.el.style.color = shadeFromHue(f.baseHue, f.phase, f.phase2);
 
-      // gentle drift added
-      const t = now/1000;
-      f.vx += Math.sin(t*0.27 + i) * 0.00002 * dt;
-      f.vy += Math.cos(t*0.19 + i*1.1) * 0.00002 * dt;
+const t = now/1000;
 
-      // damping
+// random drift: sometimes the flower stays still
+if (Math.random() < 0.5) { // 50% chance to drift this frame
+    f.vx += Math.sin(t*0.27 + i) * 0.00002 * dt;
+    f.vy += Math.cos(t*0.19 + i*1.1) * 0.00002 * dt;
+}
       f.vx *= 0.996;
       f.vy *= 0.996;
 
-      // integrate
       f.x += f.vx * dt;
       f.y += f.vy * dt;
 
-      // rotation integration
       f.rotation += f.spinVel * (dt/16);
       f.spinVel *= 0.97;
 
-      // collisions with region edges (xMin/xMax bounce/dribble)
-      // Horizontal bounds:
       if(f.x < region.xMin + 6){
-        // push back in bounds and either bounce or dribble
         f.x = region.xMin + 6;
         if(Math.random() < 0.75){
-          // bounce with damping
           f.vx = Math.abs(f.vx) * (0.6 + Math.random()*0.3);
         } else {
-          // dribble: very small along-edge slide + slight random downward/upward nudge
           f.vx = 0.02 * (0.1 + Math.random()*0.6);
           f.vy += (Math.random()*0.6 - 0.3);
         }
@@ -434,7 +435,6 @@
         f.spinVel += (Math.random()-0.5)*0.6;
       }
 
-      // Vertical clamp within region.yMin..yMax with softer bounce
       if(f.y < region.yMin + 6){
         f.y = region.yMin + 6;
         f.vy = Math.abs(f.vy) * (0.55 + Math.random()*0.3);
@@ -444,14 +444,12 @@
       }
     }
 
-    // resolve pairwise collisions
     for(let a=0;a<flowers.length;a++){
       for(let b=a+1;b<flowers.length;b++){
         resolveCollision(flowers[a], flowers[b]);
       }
     }
 
-    // apply position/transform to DOM
     for(let i=0;i<flowers.length;i++){
       const f = flowers[i];
       f.el.style.left = `${Math.round(f.x)}px`;
@@ -463,13 +461,9 @@
   }
   requestAnimationFrame(loop);
 
-  /* Cursor interactions: extremely close threshold (very tiny),
-     blow-away impulse with randomness and spin, velocity-based physics already handles inertia.
-     Threshold is small (BLOW_THRESHOLD px).
-  */
-  const BLOW_THRESHOLD = 8; // extremely close
-  const PROX_DETECT = 18;   // enable pointer-events when cursor is within this (still small)
-  const COOL_DOWN = 120;    // ms
+  const BLOW_THRESHOLD = 8; 
+  const PROX_DETECT = 18;   
+  const COOL_DOWN = 120;    
 
   document.addEventListener('mousemove', (ev) => {
     const mx = ev.clientX + window.scrollX;
@@ -483,7 +477,6 @@
       const dy = fy - my;
       const dist = Math.hypot(dx, dy);
 
-      // pointer-events toggling so they don't block text when far
       if(dist < PROX_DETECT){
         f.el.style.pointerEvents = 'auto';
       } else {
@@ -500,17 +493,14 @@
           const push = ((BLOW_THRESHOLD - dist) / BLOW_THRESHOLD) * (1.4 + Math.random()*2.0);
           const impulseX = nx * push * (0.9 + Math.random()*1.8);
           const impulseY = ny * push * (0.9 + Math.random()*1.8);
-          // apply impulse scaled by dt-equivalent to get perceptible velocity
           f.vx += impulseX * 10 / f.mass;
           f.vy += impulseY * 10 / f.mass;
-          // spin impulse
           f.spinVel += (Math.random()*6 - 3);
         }
       }
     }
   }, {passive:true});
 
-  // clicking empty space nudges a few
   document.addEventListener('click', (ev) => {
     for(let k=0;k<3;k++){
       const idx = Math.floor(Math.random()*flowers.length);
@@ -521,7 +511,6 @@
     }
   });
 
-  // on resize, recenter region and clamp flower positions
   window.addEventListener('resize', () => {
     const region = computeRegion();
     flowers.forEach(f=>{
