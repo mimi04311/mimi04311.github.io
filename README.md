@@ -1,130 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Wild Berri Stables</title>
-  <style>
-    body {
-      background-color: #fff5f8;
-      font-family: Georgia, serif;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    h1, h2 {
-      margin: 10px 0;
-      color: #800080;
-    }
-    p {
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none; /* removes underline */
-      color: inherit; /* makes it blend with surrounding text unless overridden */
-    }
-    a:hover, a:focus {
-      text-decoration: underline; /* underline only when hovering or focused */
-    }
-    .divider {
-      height: 3px;
-      width: 600px;
-      margin: 20px auto;
-      background: linear-gradient(to right, #800080, #c71585);
-    }
-    .divider-small {
-      height: 2px;
-      width: 400px;
-      margin: 20px auto;
-      background: linear-gradient(to right, #800080, #c71585);
-    }
-    @keyframes blink {
-      50% { opacity: 0.3; }
-    }
-    .blink {
-      animation: blink 3s linear infinite;
-    }
-    .blink-slow {
-      animation: blink 4s linear infinite;
-    }
+<meta charset="utf-8" />
+<title>Wild Berri Stables</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  :root{
+    --base-bg-r:208; --base-bg-g:122; --base-bg-b:149;
+  }
 
-    /* Hide GitHub permalink chain icons */
-    .anchor {
-      display: none !important;
-    }
-  </style>
+  html,body{height:100%; margin:0; padding:0;}
+  body {
+    background-color: rgb(var(--base-bg-r),var(--base-bg-g),var(--base-bg-b));
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.45s linear;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Content wrapper constrained to 720px for text width */
+  .content-wrap {
+    max-width: 720px;        /* TEXT width constraint */
+    margin: 0 auto;
+    text-align: center;      /* body text centered under headers */
+  }
+
+  h1,h2 { margin:10px 0; color:#800080; }
+  p { line-height:1.6; margin:0 0 1em 0; }
+  a { text-decoration:none; color:inherit; }
+  a:hover, a:focus { text-decoration:underline; }
+
+  .divider { height:3px; width:600px; margin:20px auto; background: linear-gradient(to right,#800080,#c71585); }
+  .divider-small { height:2px; width:400px; margin:20px auto; background: linear-gradient(to right,#800080,#c71585); }
+
+  /* Stars: exact pale gold appearance (kept unchanged) */
+  .star {
+    color: #fdf5c8; /* pale gold exact */
+    font-size: 1em;
+    display: inline-block;
+    text-shadow:
+      0 0 5px #fffacd,
+      0 0 10px #fff8dc,
+      0 0 20px #ffd700,
+      0 0 30px #ffe680,
+      0 0 40px #fff8dc;
+    transition: opacity .45s linear, text-shadow .45s linear;
+    will-change: opacity, text-shadow;
+  }
+
+  img { vertical-align: middle; }
+
+  /* Sparkle particle style (for stochastic glitter near stars) */
+  .spark {
+    position: absolute;
+    pointer-events: none;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff, rgba(255,255,255,0.9) 20%, rgba(255,240,160,0.8) 40%, rgba(255,200,60,0.0) 70%);
+    opacity: 0;
+    transform: scale(0.2);
+    will-change: transform, opacity, left, top;
+    filter: blur(0.4px);
+  }
+
+  @keyframes sparkAnim {
+    0%   { opacity:1; transform: scale(0.2) translateY(0); }
+    60%  { opacity:0.9; transform: scale(1.0) translateY(-6px); }
+    100% { opacity:0; transform: scale(1.2) translateY(-12px); }
+  }
+
+  /* Flower base style: absolutely positioned so they float above text */
+  .flower {
+    position: absolute;       /* absolute in document coordinates -> will move with scroll */
+    z-index: 9999;            /* above page content */
+    font-size: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+    line-height: 1;
+    transform-origin: center center;
+    will-change: transform, left, top, color, opacity;
+    pointer-events: none;     /* default: not intercept clicks unless enabled temporarily */
+  }
+
+  .flower:focus { outline: 2px solid rgba(255,255,255,0.15); }
+
+</style>
 </head>
 <body>
 
-  <div class="divider"></div>
+  <div class="content-wrap">
 
-  <div style="font-size: 42px; text-shadow: 2px 2px 4px rgba(128, 0, 128, 0.3);">
-    <span class="blink">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
-    <h1>
-      <span class="blink">✧</span>
-      <img src="https://img10.glitterfy.com/25241/glitterfy5110259T773B81.gif" alt="Glitter">
-      <span class="blink">✧</span>
-    </h1>
-    <span class="blink">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
+    <div class="divider"></div>
+
+    <div style="font-size: 42px; text-shadow: 2px 2px 4px rgba(128,0,128,0.3);">
+      <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
+      <h1>
+        <span class="star">✧</span>
+        <img src="https://img10.glitterfy.com/25241/glitterfy5110259T773B81.gif" alt="Glitter">
+        <span class="star">✧</span>
+      </h1>
+      <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
+    </div>
+
+    <p style="font-style: italic; font-size: 18px;">
+      ◈────── <span class="star">『 Where strength meets refinement, and heritage meets the future 』</span> ──────◈
+    </p>
+
+    <div class="divider"></div>
+
+    <h2><span class="flower-inline">❀</span>━━━ About Us ━━━<span class="flower-inline">❀</span></h2>
+    <p>
+      Welcome to <b style="color:#c71585;">Wild Berri Stables</b>, 
+      <a href="https://www.equiverse.com/horses.php?id=121803&div=39822" style="color:#000;">
+        a home devoted to the development and celebration of the mustang
+      </a>.
+      We honor the resilience and spirit that defines the breed, while carefully working toward a stronger,
+      more balanced future generation. Each horse here is treated as both a partner and a legacy —
+      carrying forward the traits that make mustangs extraordinary.
+    </p>
+
+    <div class="divider-small"></div>
+
+    <h2><span class="flower-inline">✿</span>━━━ Current Focus ━━━<span class="flower-inline">❁</span></h2>
+    <p>
+      At present, our stable is in its <b style="color:#c71585;">foundation stage</b>, focusing on building solid training,
+      refining horsemanship, and establishing the groundwork for a thoughtful breeding program. While our
+      breeding program has not yet opened, we are laying the careful foundation needed to ensure its success.
+    </p>
+
+    <div class="divider-small"></div>
+
+    <h2><span class="flower-inline">❀</span>━━━ Looking Ahead ━━━<span class="flower-inline">✿</span></h2>
+    <p>
+      As we move forward, we are especially interested in acquiring mustangs with strong potential and a
+      conformation rating of <b style="color:#c71585;">60 or higher</b>. This vision will guide the future of our breeding efforts.
+    </p>
+
+    <div class="divider-small"></div>
+
+    <h2><span class="flower-inline">✿</span>━━━ Beyond Breeding ━━━<span class="flower-inline">❁</span></h2>
+    <p>
+      Wild Berri Stables is not only about producing the next generation of horses, but also about
+      cultivating a space for growth and connection. From everyday training to the specialized work offered
+      through <b style="color:#c71585;">
+        <a href="https://www.equiverse.com/riding-school.php?id=121803" style="color:#cc33cc;">
+          Sweet Berri's Equine Institute
+        </a>
+      </b>, our mission is to bring out the best in every horse while celebrating the beauty of the breed we love.
+    </p>
+
+    <div class="divider"></div>
+
+    <p style="font-size:16px; color:#800080; margin-top:30px;">
+      <span class="star">┊ ⋆ ┊ ⋆ ┊ ⋆ ┊</span><br>
+      <span class="star">✧</span> Wild Berri Stables • Established 2020 • "Bred with Heart, Guided with Care" <span class="star">✧</span><br>
+      <span class="star">┊ ⋆ ┊ ⋆ ┊ ⋆ ┊</span>
+    </p>
+
   </div>
 
-  <p style="font-style: italic; font-size: 18px;">
-    ◈────── <span class="blink-slow">『 Where strength meets refinement, and heritage meets the future 』</span> ──────◈
-  </p>
+  <!-- container for sparkles -->
+  <div id="spark-container" aria-hidden="true"></div>
 
-  <div class="divider"></div>
+<script>
+/* ========================= STARS (unchanged look, sine flicker + background link) ========================= */
+(function(){
+  const stars = Array.from(document.querySelectorAll('.star'));
+  const body = document.body;
+  const starData = stars.map(()=>({
+    phase: Math.random()*Math.PI*2,
+    speed: 0.00035 + Math.random()*0.0007,
+    glitter: Math.random() > 0.62
+  }));
 
-  <h2><span class="blink">❀</span>━━━ About Us ━━━<span class="blink">❀</span></h2>
-  <p>
-    Welcome to <b style="color:#c71585;">Wild Berri Stables</b>, 
-    <a href="https://www.equiverse.com/horses.php?id=121803&div=39822" style="color:#000;">
-      a home devoted to the development and celebration of the mustang
-    </a>.
-    We honor the resilience and spirit that defines the breed, while carefully working toward a stronger,
-    more balanced future generation. Each horse here is treated as both a partner and a legacy —
-    carrying forward the traits that make mustangs extraordinary.
-  </p>
+  let last = performance.now();
+  function tickStars(now){
+    const dt = Math.max(1, now - last);
+    last = now;
+    let total = 0;
+    for(let i=0;i<stars.length;i++){
+      const s = stars[i], d = starData[i];
+      d.phase += d.speed * dt;
+      const opacity = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(d.phase));
+      const blur = opacity * 35;
+      s.style.opacity = (d.glitter ? Math.min(1, opacity + Math.random()*0.25) : opacity).toFixed(3);
+      s.style.textShadow = `
+        0 0 ${5*opacity}px #fffacd,
+        0 0 ${10*opacity}px #fff8dc,
+        0 0 ${20*opacity}px #ffd700,
+        0 0 ${30*opacity}px #ffe680,
+        0 0 ${blur}px #fff8dc
+      `;
+      total += opacity;
+    }
+    // background linked to average brightness
+    const avg = total / Math.max(1, stars.length);
+    const base = {r:208,g:122,b:149};
+    const darken = 30 * (1 - avg);
+    body.style.backgroundColor = `rgb(${Math.round(base.r - darken)},${Math.round(base.g - darken)},${Math.round(base.b - darken)})`;
 
-  <div class="divider-small"></div>
+    requestAnimationFrame(tickStars);
+  }
+  requestAnimationFrame(tickStars);
 
-  <h2><span class="blink">✧</span>━━━ Current Focus ━━━<span class="blink">✧</span></h2>
-  <p>
-    At present, our stable is in its <b style="color:#c71585;">foundation stage</b>, focusing on building solid training,
-    refining horsemanship, and establishing the groundwork for a thoughtful breeding program. While our
-    breeding program has not yet opened, we are laying the careful foundation needed to ensure its success.
-  </p>
+  /* stochastic glitter around stars: spawn tiny sparks near random stars occasionally */
+  const sparkContainer = document.getElementById('spark-container');
+  function spawnSparkAroundStar(){
+    if(stars.length === 0) return;
+    const idx = Math.floor(Math.random()*stars.length);
+    const starEl = stars[idx];
+    const rect = starEl.getBoundingClientRect();
+    const x = rect.left + rect.width * (0.2 + Math.random()*0.6) + window.scrollX;
+    const y = rect.top  + rect.height * (0.2 + Math.random()*0.6) + window.scrollY;
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.left = (x - 3) + 'px';
+    s.style.top  = (y - 3) + 'px';
+    s.style.width = (4 + Math.random()*6) + 'px';
+    s.style.height = s.style.width;
+    s.style.opacity = '0';
+    sparkContainer.appendChild(s);
+    const dur = 700 + Math.random()*800;
+    s.style.animation = `sparkAnim ${dur}ms ease-out forwards`;
+    setTimeout(()=> { if(s && s.parentNode) s.parentNode.removeChild(s); }, dur + 50);
+  }
+  setInterval(()=> { if(Math.random() < 0.28) spawnSparkAroundStar(); }, 250);
+})();
 
-  <div class="divider-small"></div>
+/* ========================= FLOWER SYSTEM (velocity physics, edge bounce/dribble, collisions) ========================= */
+(function(){
+  const INLINE_SELECTOR = '.flower-inline';
+  const placeholders = Array.from(document.querySelectorAll(INLINE_SELECTOR));
+  const palette = [230, 240, 250, 260, 270, 280, 290]; // periwinkle->purple->blue family
+  const flowers = [];
 
-  <h2><span class="blink">❀</span>━━━ Looking Ahead ━━━<span class="blink">❀</span></h2>
-  <p>
-    As we move forward, we are especially interested in acquiring mustangs with strong potential and a
-    conformation rating of <b style="color:#c71585;">60 or higher</b>. Our goal is to develop a program that preserves the
-    hardy essence of the mustang while fostering balance, athleticism, and soundness in every horse.
-    This vision will guide the future of our breeding efforts, ensuring quality without losing character.
-  </p>
+  // Bounds (document-space) for flowers:
+  // - Width bound: center-aligned region of 750px (flowers bounce/drift at left/right edges)
+  // - Text/content area remains max 720px centered; we do not change text.
+  const FLOWER_REGION_WIDTH = 750;           // as requested (flowers bounds before bouncing)
+  const FLOWER_MAX_HEIGHT = 650;             // back-and-forth total height constraint
+  const TOP_MARGIN = 60;                     // starting top of flower allowed area
 
-  <div class="divider-small"></div>
+  function rand(min,max){ return Math.random()*(max-min)+min; }
+  function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
-  <h2><span class="blink">✧</span>━━━ Beyond Breeding ━━━<span class="blink">✧</span></h2>
-  <p>
-    Wild Berri Stables is not only about producing the next generation of horses, but also about
-    cultivating a space for growth and connection. From everyday training to the specialized work offered
-    through <b style="color:#c71585;">
-      <a href="https://www.equiverse.com/riding-school.php?id=121803" style="color:#cc33cc;">
-        Sweet Berri's Equine Institute
-      </a>
-    </b>, our mission is to bring out the best in every horse
-    while celebrating the beauty of the breed we love.
-  </p>
+  // compute region centered on content-wrap center
+  function computeRegion(){
+    const centerX = window.innerWidth / 2 + window.scrollX;
+    const xMin = Math.round(centerX - FLOWER_REGION_WIDTH/2);
+    const xMax = Math.round(centerX + FLOWER_REGION_WIDTH/2);
+    const yMin = Math.round(TOP_MARGIN + window.scrollY);
+    const yMax = Math.round(yMin + FLOWER_MAX_HEIGHT);
+    return {xMin, xMax, yMin, yMax};
+  }
 
-  <div class="divider"></div>
+  // create flower element at document coordinate (pageX, pageY)
+  function createFlower(char, pageX, pageY, baseHue){
+    const el = document.createElement('span');
+    el.className = 'flower';
+    el.textContent = char;
+    document.body.appendChild(el);
+    // initial style
+    el.style.left = `${pageX}px`;
+    el.style.top  = `${pageY}px`;
+    el.style.opacity = '0';
+    requestAnimationFrame(()=> el.style.opacity = '1');
 
-  <p style="font-size:16px; color:#800080; margin-top:30px;">
-    <span class="blink">┊ ⋆ ┊ ⋆ ┊ ⋆ ┊</span><br>
-    <span class="blink-slow">✧</span> Wild Berri Stables • Established 2020 • "Bred with Heart, Guided with Care" <span class="blink-slow">✧</span><br>
-    <span class="blink">┊ ⋆ ┊ ⋆ ┊ ⋆ ┊</span>
-  </p>
+    const f = {
+      el,
+      char,
+      x: pageX,
+      y: pageY,
+      vx: rand(-0.03,0.03),
+      vy: rand(-0.03,0.03),
+      rotation: rand(-8,8),
+      spinVel: 0,
+      baseHue: baseHue + rand(-4,4),
+      phase: rand(0, Math.PI*2),
+      phase2: rand(0, Math.PI*2),
+      speed: rand(0.00022, 0.0006),
+      speed2: rand(0.00012, 0.00032),
+      radius: 12 + Math.random()*6, // approximate collision radius in px
+      mass: 1 + Math.random()*1.2,
+      interactive: Math.random() > 0.45,
+      canSpinOnClick: Math.random() > 0.7,
+      lastImpulse: 0
+    };
 
+    if(f.canSpinOnClick){
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', (ev)=>{
+        f.spinVel += (Math.random()*5 + 2) * (Math.random()>0.5?1:-1);
+        f.vx += (Math.random()*2 - 1) * 0.8;
+        f.vy += (Math.random()*2 - 1) * 0.8;
+        ev.stopPropagation();
+      }, {passive:true});
+    }
+
+    // pointer-events toggled by proximity so they don't block clicks normally
+    el.style.pointerEvents = 'none';
+    flowers.push(f);
+    return f;
+  }
+
+  // convert placeholders to absolute flowers (preserve inline flow)
+  placeholders.forEach((ph, i) => {
+    const rect = ph.getBoundingClientRect();
+    const pageX = rect.left + window.scrollX;
+    const pageY = rect.top + window.scrollY;
+    const char = ph.textContent || '❀';
+    const hue = palette[i % palette.length];
+    createFlower(char, pageX, pageY, hue);
+    ph.style.opacity = '0';
+    ph.style.pointerEvents = 'none';
+  });
+
+  // add extras up to a target count
+  const TARGET = 22;
+  while(flowers.length < TARGET){
+    const left = rand(80, Math.max(160, window.innerWidth-160)) + window.scrollX;
+    const top  = rand(140, Math.max(220, window.innerHeight-180)) + window.scrollY;
+    const char = (flowers.length % 2 === 0) ? '❀' : '✿';
+    const hue = palette[flowers.length % palette.length];
+    createFlower(char, left, top, hue);
+  }
+
+  // shade computation within hue family
+  function shadeFromHue(hue, p1, p2){
+    const lightness = 52 + 14 * Math.sin(p1);    // ~38..66
+    const saturation = 62 + 12 * Math.sin(p2);  // ~50..74
+    const hueBreath = hue + 3 * Math.sin(p1*0.6 + p2*0.4);
+    return `hsl(${hueBreath.toFixed(1)}, ${saturation.toFixed(1)}%, ${lightness.toFixed(1)}%)`;
+  }
+
+  // collision resolution (elastic-ish) between circle bodies
+  function resolveCollision(a, b){
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const dist = Math.hypot(dx, dy) || 0.0001;
+    const overlap = (a.radius + b.radius) - dist;
+    if(overlap > 0){
+      // normal vector
+      const nx = dx / dist;
+      const ny = dy / dist;
+      // push them apart proportionally to mass
+      const totalMass = a.mass + b.mass;
+      const pushA = (overlap * (b.mass / totalMass)) * 1.02;
+      const pushB = (overlap * (a.mass / totalMass)) * 1.02;
+      a.x -= nx * pushA;
+      a.y -= ny * pushA;
+      b.x += nx * pushB;
+      b.y += ny * pushB;
+
+      // relative velocity along normal
+      const rvx = b.vx - a.vx;
+      const rvy = b.vy - a.vy;
+      const velAlongNormal = rvx*nx + rvy*ny;
+      if(velAlongNormal > -0.0001) {
+        // compute restitution (bounciness)
+        const restitution = 0.6 + Math.random()*0.2; // slightly random
+        const j = -(1 + restitution) * velAlongNormal / (1/a.mass + 1/b.mass);
+        const impulseX = j * nx;
+        const impulseY = j * ny;
+        a.vx -= impulseX / a.mass;
+        a.vy -= impulseY / a.mass;
+        b.vx += impulseX / b.mass;
+        b.vy += impulseY / b.mass;
+
+        // small spin transfer
+        a.spinVel += (Math.random()-0.5)*0.6;
+        b.spinVel += (Math.random()-0.5)*0.6;
+      }
+    }
+  }
+
+  // main loop: physics integration + collisions + edge behavior
+  let last = performance.now();
+  function loop(now){
+    const dt = Math.min(40, now - last);
+    last = now;
+
+    const region = computeRegion();
+    for(let i=0;i<flowers.length;i++){
+      const f = flowers[i];
+
+      // advance color phases
+      f.phase += f.speed * dt;
+      f.phase2 += f.speed2 * dt;
+      f.el.style.color = shadeFromHue(f.baseHue, f.phase, f.phase2);
+
+      // gentle drift added
+      const t = now/1000;
+      f.vx += Math.sin(t*0.27 + i) * 0.00002 * dt;
+      f.vy += Math.cos(t*0.19 + i*1.1) * 0.00002 * dt;
+
+      // damping
+      f.vx *= 0.996;
+      f.vy *= 0.996;
+
+      // integrate
+      f.x += f.vx * dt;
+      f.y += f.vy * dt;
+
+      // rotation integration
+      f.rotation += f.spinVel * (dt/16);
+      f.spinVel *= 0.97;
+
+      // collisions with region edges (xMin/xMax bounce/dribble)
+      // Horizontal bounds:
+      if(f.x < region.xMin + 6){
+        // push back in bounds and either bounce or dribble
+        f.x = region.xMin + 6;
+        if(Math.random() < 0.75){
+          // bounce with damping
+          f.vx = Math.abs(f.vx) * (0.6 + Math.random()*0.3);
+        } else {
+          // dribble: very small along-edge slide + slight random downward/upward nudge
+          f.vx = 0.02 * (0.1 + Math.random()*0.6);
+          f.vy += (Math.random()*0.6 - 0.3);
+        }
+        f.spinVel += (Math.random()-0.5)*0.6;
+      } else if(f.x > region.xMax - 6){
+        f.x = region.xMax - 6;
+        if(Math.random() < 0.75){
+          f.vx = -Math.abs(f.vx) * (0.6 + Math.random()*0.3);
+        } else {
+          f.vx = -0.02 * (0.1 + Math.random()*0.6);
+          f.vy += (Math.random()*0.6 - 0.3);
+        }
+        f.spinVel += (Math.random()-0.5)*0.6;
+      }
+
+      // Vertical clamp within region.yMin..yMax with softer bounce
+      if(f.y < region.yMin + 6){
+        f.y = region.yMin + 6;
+        f.vy = Math.abs(f.vy) * (0.55 + Math.random()*0.3);
+      } else if(f.y > region.yMax - 6){
+        f.y = region.yMax - 6;
+        f.vy = -Math.abs(f.vy) * (0.55 + Math.random()*0.3);
+      }
+    }
+
+    // resolve pairwise collisions
+    for(let a=0;a<flowers.length;a++){
+      for(let b=a+1;b<flowers.length;b++){
+        resolveCollision(flowers[a], flowers[b]);
+      }
+    }
+
+    // apply position/transform to DOM
+    for(let i=0;i<flowers.length;i++){
+      const f = flowers[i];
+      f.el.style.left = `${Math.round(f.x)}px`;
+      f.el.style.top  = `${Math.round(f.y)}px`;
+      f.el.style.transform = `translate(-50%,-50%) rotate(${f.rotation.toFixed(2)}deg)`;
+    }
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  /* Cursor interactions: extremely close threshold (very tiny),
+     blow-away impulse with randomness and spin, velocity-based physics already handles inertia.
+     Threshold is small (BLOW_THRESHOLD px).
+  */
+  const BLOW_THRESHOLD = 8; // extremely close
+  const PROX_DETECT = 18;   // enable pointer-events when cursor is within this (still small)
+  const COOL_DOWN = 120;    // ms
+
+  document.addEventListener('mousemove', (ev) => {
+    const mx = ev.clientX + window.scrollX;
+    const my = ev.clientY + window.scrollY;
+
+    for(let i=0;i<flowers.length;i++){
+      const f = flowers[i];
+      const fx = f.x;
+      const fy = f.y;
+      const dx = fx - mx;
+      const dy = fy - my;
+      const dist = Math.hypot(dx, dy);
+
+      // pointer-events toggling so they don't block text when far
+      if(dist < PROX_DETECT){
+        f.el.style.pointerEvents = 'auto';
+      } else {
+        f.el.style.pointerEvents = 'none';
+      }
+
+      if(dist < BLOW_THRESHOLD && f.interactive){
+        const now = performance.now();
+        if(now - f.lastImpulse > COOL_DOWN && Math.random() < 0.96){
+          f.lastImpulse = now;
+          const norm = dist || 0.0001;
+          const nx = dx / norm;
+          const ny = dy / norm;
+          const push = ((BLOW_THRESHOLD - dist) / BLOW_THRESHOLD) * (1.4 + Math.random()*2.0);
+          const impulseX = nx * push * (0.9 + Math.random()*1.8);
+          const impulseY = ny * push * (0.9 + Math.random()*1.8);
+          // apply impulse scaled by dt-equivalent to get perceptible velocity
+          f.vx += impulseX * 10 / f.mass;
+          f.vy += impulseY * 10 / f.mass;
+          // spin impulse
+          f.spinVel += (Math.random()*6 - 3);
+        }
+      }
+    }
+  }, {passive:true});
+
+  // clicking empty space nudges a few
+  document.addEventListener('click', (ev) => {
+    for(let k=0;k<3;k++){
+      const idx = Math.floor(Math.random()*flowers.length);
+      const f = flowers[idx];
+      f.vx += (Math.random()*2 - 1) * 0.6;
+      f.vy += (Math.random()*2 - 1) * 0.6;
+      f.spinVel += (Math.random()*2 - 1) * 1.0;
+    }
+  });
+
+  // on resize, recenter region and clamp flower positions
+  window.addEventListener('resize', () => {
+    const region = computeRegion();
+    flowers.forEach(f=>{
+      f.x = clamp(f.x, region.xMin + 6, region.xMax - 6);
+      f.y = clamp(f.y, region.yMin + 6, region.yMax - 6);
+    });
+  });
+
+})(); /* end flower system */
+</script>
 </body>
 </html>
+
 
