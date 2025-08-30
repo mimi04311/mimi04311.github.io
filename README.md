@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -44,6 +45,11 @@
     }
     .blink-slow {
       animation: blink 4s linear infinite;
+    }
+
+    /* Hide GitHub permalink chain icons */
+    .anchor {
+      display: none !important;
     }
   </style>
 </head>
