@@ -98,7 +98,7 @@
       <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
       <h1>
         <span class="star">✧</span>
-        <img src="https://img10.glitterfy.com/25241/glitterfy5110259T773B81.gif" alt="Glitter">
+        <img src="https://jumpshare.com/s/VMmEvjVQwdkLAykvVPRQ" alt="Glitter">
         <span class="star">✧</span>
       </h1>
       <span class="star">⋆｡°✩ ⋆｡°✩ ⋆｡°✩</span>
